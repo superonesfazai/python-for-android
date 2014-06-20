@@ -16,6 +16,14 @@ function prebuild_numpy() {
 
 	try patch -p1 < $RECIPE_numpy/patches/fix-numpy.patch
 	touch .patched
+
+	#$BUILD_PATH/python-install/lib
+	try echo "[DEFAULT]" >> $RECIPE_numpy/site.cfg
+	try echo "library_dirs = $BUILD_PATH/python-install/lib" >> $RECIPE_numpy/site.cfg
+	try echo "include_dirs = $BUILD_PATH/python-install/include" >> $RECIPE_numpy/site.cfg
+	try echo "" >> $RECIPE_numpy/site.cfg
+	try echo "[ATLAS]" >> $RECIPE_numpy/site.cfg
+	try echo "atlas_libs = openblas" >> $RECIPE_numpy/site.cfg
 }
 
 function shouldbuild_numpy() {
@@ -29,7 +37,7 @@ function build_numpy() {
 	cd $BUILD_numpy
 
 	push_arm
-
+	try export FC=arm-linux-androideabi-gfortran
 	try $HOSTPYTHON setup.py build_ext -v
 	try find build/lib.* -name "*.o" -exec $STRIP {} \;
 	try $HOSTPYTHON setup.py install -O2
