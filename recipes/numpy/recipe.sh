@@ -18,12 +18,13 @@ function prebuild_numpy() {
 	touch .patched
 
 	#$BUILD_PATH/python-install/lib
-	try echo "[DEFAULT]" >> $RECIPE_numpy/site.cfg
-	try echo "library_dirs = $BUILD_PATH/python-install/lib" >> $RECIPE_numpy/site.cfg
-	try echo "include_dirs = $BUILD_PATH/python-install/include" >> $RECIPE_numpy/site.cfg
-	try echo "" >> $RECIPE_numpy/site.cfg
-	try echo "[ATLAS]" >> $RECIPE_numpy/site.cfg
-	try echo "atlas_libs = openblas" >> $RECIPE_numpy/site.cfg
+	mv site.cfg.example site.cfg2
+	echo "[DEFAULT]" >> site.cfg
+	echo "library_dirs = $BUILD_PATH/python-install/lib" >> site.cfg
+	echo "include_dirs = $BUILD_PATH/python-install/include" >> site.cfg
+	echo "" >> site.cfg
+	echo "[ATLAS]" >> site.cfg
+	echo "atlas_libs = openblas" >> site.cfg
 }
 
 function shouldbuild_numpy() {
