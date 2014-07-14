@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION_plotly=${VERSION_plotly:-1.1.4}
-URL_plotly=http://pypi.python.org/packages/source/p/requests/requests-$VERSION_plotly.tar.gz
+URL_plotly=http://pypi.python.org/packages/source/p/plotly/plotly-$VERSION_plotly.tar.gz
 DEPS_plotly=(pyrequests python)
 MD5_plotly=96161687279503abb6b1f7befcce0fc7
 BUILD_plotly=$BUILD_PATH/plotly/$(get_directory $URL_plotly)

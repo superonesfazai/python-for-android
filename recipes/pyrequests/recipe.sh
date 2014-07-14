@@ -1,7 +1,7 @@
 #!/bin/bash
 
 VERSION_pyrequests=${VERSION_pyrequests:-2.3.0}
-URL_pyrequests=http://pypi.python.org/packages/source/p/requests/requests-$VERSION_pyrequests.tar.gz
+URL_pyrequests=http://pypi.python.org/packages/source/r/requests/requests-$VERSION_pyrequests.tar.gz
 DEPS_pyrequests=(python)
 MD5_pyrequests=7449ffdc8ec9ac37bbcd286003c80f00
 BUILD_pyrequests=$BUILD_PATH/pyrequests/$(get_directory $URL_pyrequests)
